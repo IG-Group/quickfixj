@@ -198,7 +198,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <dictFile>../quickfixj-messages/quickfixj-messages-fixt11/src/main/resources/FIXT11.xml</dictFile>
+                            <dictFile>../quickfixj-messages/quickfixj-messages-fixt11/src/main/resources/FIXT11.modified.xml</dictFile>
                             <packaging>quickfix.fixt11</packaging>
                             <fieldPackage>quickfix.field</fieldPackage>
                             <decimal>${generator.decimal}</decimal>

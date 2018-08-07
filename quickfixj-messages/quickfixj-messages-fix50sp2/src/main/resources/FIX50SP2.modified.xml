@@ -2,6 +2,30 @@
   <header/>
   <trailer/>
   <messages>
+    <!-- BEGIN Custom Defined IG Messages -->
+    <!-- see http://fixprotocol.org/specifications/EP117 -->
+    <message name="AccountSummaryReportRequest" msgtype="UA" msgcat="app">
+      <field name="AccountSummaryReportRequestID" required="Y"/>
+      <field name="SubscriptionRequestType" required="Y"/>
+      <component name="Parties" required="Y"/>
+    </message>
+    <message name="AccountSummaryReport" msgtype="CQ" msgcat="app">
+      <field name="AccountSummaryReportID" required="Y"/>
+      <field name="AccountSummaryReportRequestID" required="Y"/>
+      <field name="AccountSummaryReportRequestResult" required="Y"/>
+      <field name="ClearingBusinessDate" required="Y"/>
+      <field name="TransactTime" required="N"/>
+      <field name="UnsolicitedIndicator" required="Y"/>
+      <field name="TotalNetValue" required="N"/>
+      <field name="MarginExcess" required="N"/>
+      <component name="MarginAmountData" required="Y"/>
+      <component name="Parties" required="Y"/>
+      <component name="CollateralAmountGrp" required="Y"/>
+      <component name="AccountSummaryItemGrp" required="Y"/>
+      <field name="Text" required="N"/>
+    </message>
+    <!-- END Custom Defined IG Messages -->
+    
     <message name="IOI" msgtype="6" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
       <field name="IOIID" required="Y"/>
@@ -85,7 +109,9 @@
       <field name="WorkingIndicator" required="N"/>
       <field name="OrdRejReason" required="N"/>
       <field name="ExecRestatementReason" required="N"/>
-      <field name="Account" required="N"/>
+      
+      <!-- required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <field name="DayBookingInst" required="N"/>
@@ -123,7 +149,9 @@
       <field name="TargetStrategyParameters" required="N"/>
       <field name="ParticipationRate" required="N"/>
       <field name="TargetStrategyPerformance" required="N"/>
-      <field name="Currency" required="N"/>
+      
+      <!-- required by IG -->
+      <field name="Currency" required="Y"/>
       <field name="ComplianceID" required="N"/>
       <field name="SolicitedFlag" required="N"/>
       <field name="TimeInForce" required="N"/>
@@ -228,6 +256,11 @@
       <field name="TimeToExpiration" required="N"/>
       <field name="RiskFreeRate" required="N"/>
       <field name="PriceDelta" required="N"/>
+      
+      <!-- IG customisations -->
+      <field name="RefOrderID" required="N"/>
+      <field name="RefOrderIDSource" required="N"/>
+      <field name="ContingencyType" required="N"/>
     </message>
     <message name="OrderCancelReject" msgtype="9" msgcat="app">
       <field name="OrderID" required="Y"/>
@@ -240,7 +273,9 @@
       <field name="WorkingIndicator" required="N"/>
       <field name="OrigOrdModTime" required="N"/>
       <field name="ListID" required="N"/>
-      <field name="Account" required="N"/>
+      
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <field name="TradeOriginationDate" required="N"/>
@@ -821,7 +856,8 @@
       <component name="MiscFeesGrp" required="N"/>
     </message>
     <message name="PositionMaintenanceRequest" msgtype="AL" msgcat="app">
-      <field name="PosReqID" required="N"/>
+      <!-- Required by IG -->
+      <field name="PosReqID" required="Y"/>
       <field name="PosTransType" required="Y"/>
       <field name="PosMaintAction" required="Y"/>
       <field name="OrigPosReqRefID" required="N"/>
@@ -830,15 +866,18 @@
       <field name="SettlSessID" required="N"/>
       <field name="SettlSessSubID" required="N"/>
       <component name="Parties" required="Y"/>
-      <field name="Account" required="N"/>
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <component name="Instrument" required="Y"/>
-      <field name="Currency" required="N"/>
+      <!-- Required by IG -->
+      <field name="Currency" required="Y"/>
       <component name="InstrmtLegGrp" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
       <component name="TrdgSesGrp" required="N"/>
-      <field name="TransactTime" required="N"/>
+      <!-- Required by IG -->
+      <field name="TransactTime" required="Y"/>
       <component name="PositionQty" required="Y"/>
       <component name="PositionAmountData" required="N"/>
       <field name="AdjustmentType" required="N"/>
@@ -862,7 +901,9 @@
       <field name="SettlSessID" required="N"/>
       <field name="SettlSessSubID" required="N"/>
       <component name="Parties" required="N"/>
-      <field name="Account" required="N"/>
+      
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <field name="PosMaintRptRefID" required="N"/>
@@ -874,7 +915,8 @@
       <component name="InstrmtLegGrp" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
       <component name="TrdgSesGrp" required="N"/>
-      <field name="TransactTime" required="N"/>
+      <!-- Required by IG -->
+      <field name="TransactTime" required="Y"/>
       <component name="PositionQty" required="Y"/>
       <component name="PositionAmountData" required="N"/>
       <field name="AdjustmentType" required="N"/>
@@ -890,7 +932,8 @@
       <field name="SubscriptionRequestType" required="N"/>
       <field name="SettlCurrency" required="N"/>
       <component name="Parties" required="Y"/>
-      <field name="Account" required="N"/>
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <component name="Instrument" required="N"/>
@@ -923,7 +966,8 @@
       <field name="SettlSessSubID" required="N"/>
       <field name="SettlCurrency" required="N"/>
       <component name="Parties" required="Y"/>
-      <field name="Account" required="N"/>
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <component name="Instrument" required="N"/>
@@ -952,14 +996,17 @@
       <field name="SettlCurrency" required="N"/>
       <field name="MessageEventSource" required="N"/>
       <component name="Parties" required="Y"/>
-      <field name="Account" required="N"/>
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <component name="Instrument" required="N"/>
       <field name="Currency" required="N"/>
+      <field name="OpenPrice" required="N"/>      <!-- IG customisation, price at which position opened, sent at close -->
       <field name="SettlPrice" required="N"/>
       <field name="SettlPriceType" required="N"/>
       <field name="PriorSettlPrice" required="N"/>
+      <field name="SettlCurrFxRate" required="N"/>    <!-- IG customisation for Convert on Close -->
       <field name="MatchStatus" required="N"/>
       <component name="InstrmtLegGrp" required="N"/>
       <component name="PosUndInstrmtGrp" required="N"/>
@@ -1972,10 +2019,13 @@
       <field name="ClOrdID" required="Y"/>
       <field name="SecondaryClOrdID" required="N"/>
       <field name="ClOrdLinkID" required="N"/>
+      <!--  IG Customisation -->
+      <field name="ContingencyType" required="N"/>
       <component name="Parties" required="N"/>
       <field name="TradeOriginationDate" required="N"/>
       <field name="TradeDate" required="N"/>
-      <field name="Account" required="N"/>
+      <!--  required by IG -->
+      <field name="Account" required="Y"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <field name="DayBookingInst" required="N"/>
@@ -2016,12 +2066,15 @@
       <component name="TriggeringInstruction" required="N"/>
       <component name="SpreadOrBenchmarkCurveData" required="N"/>
       <component name="YieldData" required="N"/>
-      <field name="Currency" required="N"/>
+      <!--  required by IG -->
+      <field name="Currency" required="Y"/>
       <field name="ComplianceID" required="N"/>
       <field name="SolicitedFlag" required="N"/>
       <field name="IOIID" required="N"/>
       <field name="QuoteID" required="N"/>
-      <field name="TimeInForce" required="N"/>
+      
+      <!-- required by IG -->
+      <field name="TimeInForce" required="Y"/>
       <field name="EffectiveTime" required="N"/>
       <field name="ExpireDate" required="N"/>
       <field name="ExpireTime" required="N"/>
@@ -2074,7 +2127,8 @@
       <field name="RegistID" required="N"/>
       <field name="ListExecInstType" required="N"/>
       <field name="ListExecInst" required="N"/>
-      <field name="ContingencyType" required="N"/>
+      <!-- IG FIX 5.0  SP2 It's an IG customisation to make it required -->
+      <field name="ContingencyType" required="Y"/>
       <field name="EncodedListExecInstLen" required="N"/>
       <field name="EncodedListExecInst" required="N"/>
       <field name="AllowableOneSidednessPct" required="N"/>
@@ -2093,7 +2147,16 @@
       <field name="ClOrdLinkID" required="N"/>
       <field name="ListID" required="N"/>
       <field name="OrigOrdModTime" required="N"/>
-      <field name="Account" required="N"/>
+      
+      <!--  Required by IG -->      
+      <field name="Account" required="Y"/>
+      <!--  IG Customisation -->
+      <field name="ContingencyType" required="N"/>
+      <field name="OrdType" required="N"/>
+      <field name="RefOrderID" required="N"/>
+      <field name="RefOrderIDSource" required="N"/>
+      <!-- End IG Customisation -->
+      
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <component name="Parties" required="N"/>
@@ -2119,7 +2182,13 @@
       <field name="ClOrdLinkID" required="N"/>
       <field name="ListID" required="N"/>
       <field name="OrigOrdModTime" required="N"/>
-      <field name="Account" required="N"/>
+      <!--  required by IG -->      
+      <field name="Account" required="Y"/>
+      <!--  BEGIN IG Customisation -->
+      <field name="RefOrderID" required="N"/>
+      <field name="RefOrderIDSource" required="N"/>
+      <field name="ContingencyType" required="N"/>
+      <!--  END IG Customisation -->
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
       <field name="DayBookingInst" required="N"/>
@@ -2205,8 +2274,12 @@
       <field name="SecondaryClOrdID" required="N"/>
       <field name="ClOrdLinkID" required="N"/>
       <component name="Parties" required="N"/>
-      <field name="OrdStatusReqID" required="N"/>
-      <field name="Account" required="N"/>
+      
+      <!-- Required by IG -->
+      <field name="OrdStatusReqID" required="Y"/>
+      <!-- Required by IG -->
+      <field name="Account" required="Y"/>
+      
       <field name="AcctIDSource" required="N"/>
       <component name="Instrument" required="Y"/>
       <component name="FinancingDetails" required="N"/>
@@ -2291,6 +2364,10 @@
     </message>
     <message name="ListCancelRequest" msgtype="K" msgcat="app">
       <field name="ListID" required="Y"/>
+      
+      <!-- IG customisation -->
+      <field name="Account" required="Y"/>
+      
       <component name="Parties" required="N"/>
       <field name="TransactTime" required="Y"/>
       <field name="TradeOriginationDate" required="N"/>
@@ -2381,7 +2458,8 @@
       <field name="EncodedText" required="N"/>
     </message>
     <message name="Quote" msgtype="S" msgcat="app">
-      <field name="QuoteReqID" required="N"/>
+      <!-- IG - made required -->
+      <field name="QuoteReqID" required="Y"/>
       <field name="QuoteID" required="Y"/>
       <field name="QuoteMsgID" required="N"/>
       <field name="QuoteRespID" required="N"/>
@@ -3003,6 +3081,8 @@
       <field name="SecurityListTypeSource" required="N"/>
       <field name="MarketID" required="N"/>
       <field name="MarketSegmentID" required="N"/>
+      <!--  IG customisation -->
+      <field name="Account" required="N"/>
       <component name="Instrument" required="N"/>
       <component name="InstrumentExtension" required="N"/>
       <component name="FinancingDetails" required="N"/>
@@ -3027,9 +3107,12 @@
       <field name="EncodedSecurityListDesc" required="N"/>
       <field name="SecurityListType" required="N"/>
       <field name="SecurityListTypeSource" required="N"/>
-      <field name="SecurityReqID" required="N"/>
-      <field name="SecurityResponseID" required="N"/>
-      <field name="SecurityRequestResult" required="N"/>
+      
+      <!-- IG - made required -->
+      <field name="SecurityReqID" required="Y"/>
+      <field name="SecurityResponseID" required="Y"/>
+      <field name="SecurityRequestResult" required="Y"/>
+      
       <field name="TransactTime" required="N"/>
       <field name="TotNoRelatedSym" required="N"/>
       <field name="MarketID" required="N"/>
@@ -3092,6 +3175,8 @@
         <field name="SellerDays" required="N"/>
         <field name="OrderID" required="N"/>
         <field name="SecondaryOrderID" required="N"/>
+        <!-- IG customisation -->
+        <field name="QuoteID" required="N"/>
         <field name="QuoteEntryID" required="N"/>
         <field name="MDEntryBuyer" required="N"/>
         <field name="MDEntrySeller" required="N"/>
@@ -3366,6 +3451,9 @@
       <field name="PegSecurityID" required="N"/>
       <field name="PegSymbol" required="N"/>
       <field name="PegSecurityDesc" required="N"/>
+      <!-- IG customisations -->
+      <field name="TrailingStopIncrement" required="N"/>
+      <field name="MinimumTrailingStopDistance" required="N"/>
     </component>
     <component name="TradingSessionRules">
       <component name="OrdTypeRules" required="N"/>
@@ -3455,7 +3543,8 @@
       </group>
     </component>
     <component name="PositionAmountData">
-      <group name="NoPosAmt" required="N">
+      <!-- Required by IG -->
+      <group name="NoPosAmt" required="Y">
         <field name="PosAmtType" required="N"/>
         <field name="PosAmt" required="N"/>
         <field name="PositionCurrency" required="N"/>
@@ -3515,11 +3604,18 @@
       </group>
     </component>
     <component name="PositionQty">
-      <group name="NoPositions" required="N">
+      <!-- Required by IG -->
+      <group name="NoPositions" required="Y">
         <field name="PosType" required="N"/>
         <field name="LongQty" required="N"/>
         <field name="ShortQty" required="N"/>
         <field name="PosQtyStatus" required="N"/>
+        <!--  IG Customisation -->  
+        <field name="PositionId" required="N"/>
+        <field name="OriginatingClientOrderRef" required="N"/>
+        <field name="OriginatingOrderIDRef" required="N"/>
+        <field name="ClosingOrderIDRef" required="N"/>
+        <!-- End IG Customisation -->
         <field name="QuantityDate" required="N"/>
         <component name="NestedParties" required="N"/>
       </group>
@@ -3821,8 +3917,15 @@
     <component name="InstrumentExtension">
       <field name="DeliveryForm" required="N"/>
       <field name="PctAtRisk" required="N"/>
+	  <!-- IG - Fixed QFJ Code Generation error --> 
+      <group name="NoInstrAttrib" required="N">
+        <field name="InstrAttribType" required="N"/>
+        <field name="InstrAttribValue" required="N"/>
+      </group>
+      <!-- 
       <component name="AttrbGrp" required="N"/>
-    </component>
+      -->
+     </component>
     <component name="TradeReportOrderDetail">
       <field name="OrderID" required="N"/>
       <field name="SecondaryOrderID" required="N"/>
@@ -4660,7 +4763,8 @@
         <component name="Parties" required="N"/>
         <field name="TradeOriginationDate" required="N"/>
         <field name="TradeDate" required="N"/>
-        <field name="Account" required="N"/>
+        <!-- Required by IG -->
+        <field name="Account" required="Y"/>
         <field name="AcctIDSource" required="N"/>
         <field name="AccountType" required="N"/>
         <field name="DayBookingInst" required="N"/>
@@ -4689,11 +4793,13 @@
         <field name="Side" required="Y"/>
         <field name="SideValueInd" required="N"/>
         <field name="LocateReqd" required="N"/>
-        <field name="TransactTime" required="N"/>
+        <!-- Required by IG -->
+        <field name="TransactTime" required="Y"/>
         <component name="Stipulations" required="N"/>
         <field name="QtyType" required="N"/>
         <component name="OrderQtyData" required="Y"/>
-        <field name="OrdType" required="N"/>
+        <!-- Required by IG -->
+        <field name="OrdType" required="Y"/>
         <field name="PriceType" required="N"/>
         <field name="Price" required="N"/>
         <field name="PriceProtectionScope" required="N"/>
@@ -4701,14 +4807,16 @@
         <component name="TriggeringInstruction" required="N"/>
         <component name="SpreadOrBenchmarkCurveData" required="N"/>
         <component name="YieldData" required="N"/>
-        <field name="Currency" required="N"/>
+        <!-- Required by IG -->
+        <field name="Currency" required="Y"/>
         <field name="ComplianceID" required="N"/>
         <field name="SolicitedFlag" required="N"/>
         <field name="IOIID" required="N"/>
         <field name="QuoteID" required="N"/>
         <field name="RefOrderID" required="N"/>
         <field name="RefOrderIDSource" required="N"/>
-        <field name="TimeInForce" required="N"/>
+        <!-- Required by IG -->
+        <field name="TimeInForce" required="Y"/>
         <field name="EffectiveTime" required="N"/>
         <field name="ExpireDate" required="N"/>
         <field name="ExpireTime" required="N"/>
@@ -5209,6 +5317,8 @@
         <field name="SellerDays" required="N"/>
         <field name="OrderID" required="N"/>
         <field name="SecondaryOrderID" required="N"/>
+        <!-- IG customisation -->
+        <field name="QuoteID" required="N"/>
         <field name="QuoteEntryID" required="N"/>
         <field name="TradeID" required="N"/>
         <field name="MDEntryBuyer" required="N"/>
@@ -5382,6 +5492,30 @@
       <component name="InstrumentParties" required="N"/>
       <component name="ComplexEvents" required="N"/>
     </component>
+    
+    <!-- BEGIN IG custom components -->
+    <!-- see http://fixprotocol.org/specifications/EP117 and http://fixprotocol.org/specifications/EP102 -->
+    <component name="MarginAmountData">
+      <group name="NoMarginAmt" required="Y">
+         <field name="MarginAmt" required="Y"/>
+         <field name="MarginAmtType" required="Y"/>
+         <field name="MarginAmtCcy" required="N"/>
+      </group>
+    </component>
+    <component name="CollateralAmountGrp">
+      <group name="NoCollateralAmounts" required="Y">
+         <field name="CollateralType" required="Y"/>
+         <field name="CurrentCollateralAmount" required="Y"/>
+         <field name="CollateralCurrency" required="N"/>
+      </group>
+    </component>
+    <component name="AccountSummaryItemGrp">
+      <group name="NoAccountSummaryItems" required="Y">
+         <field name="AccountSummaryItemType" required="Y"/>
+         <field name="AccountSummaryItemAmount" required="Y"/>
+         <field name="AccountSummaryItemCurrency" required="N"/>
+      </group>
+    </component>
   </components>
   <fields>
     <field number="1" name="Account" type="STRING"/>
@@ -5479,29 +5613,10 @@
       <value enum="2" description="AUTOMATED_EXECUTION_ORDER_PUBLIC_BROKER_INTERVENTION_OK"/>
       <value enum="3" description="MANUAL_ORDER_BEST_EXECUTION"/>
     </field>
-    <field number="22" name="SecurityIDSource" type="STRING">
-      <value enum="1" description="CUSIP"/>
-      <value enum="2" description="SEDOL"/>
-      <value enum="3" description="QUIK"/>
-      <value enum="4" description="ISIN_NUMBER"/>
-      <value enum="5" description="RIC_CODE"/>
-      <value enum="6" description="ISO_CURRENCY_CODE"/>
-      <value enum="7" description="ISO_COUNTRY_CODE"/>
-      <value enum="8" description="EXCHANGE_SYMBOL"/>
-      <value enum="9" description="CONSOLIDATED_TAPE_ASSOCIATION"/>
-      <value enum="A" description="BLOOMBERG_SYMBOL"/>
-      <value enum="B" description="WERTPAPIER"/>
-      <value enum="C" description="DUTCH"/>
-      <value enum="D" description="VALOREN"/>
-      <value enum="E" description="SICOVAM"/>
-      <value enum="F" description="BELGIAN"/>
-      <value enum="G" description="COMMON"/>
-      <value enum="H" description="CLEARING_HOUSE_CLEARING_ORGANIZATION"/>
-      <value enum="I" description="ISDA_FPML_PRODUCT_SPECIFICATION"/>
-      <value enum="J" description="OPTION_PRICE_REPORTING_AUTHORITY"/>
-      <value enum="K" description="ISDA_FPML_PRODUCT_URL"/>
-      <value enum="L" description="LETTER_OF_CREDIT"/>
-      <value enum="M" description="MARKETPLACE_ASSIGNED_IDENTIFIER"/>
+    <field number="22" name="SecurityIDSource" type="STRING"> 
+      <!--  IG Customisation -->        
+      <value enum="101" description="IG_ID"/>
+      <value enum="102" description="IG_CHART_ID"/>
     </field>
     <field number="23" name="IOIID" type="STRING"/>
     <field number="25" name="IOIQltyInd" type="CHAR">
@@ -5649,6 +5764,10 @@
       <value enum="x" description="SECURITYLISTREQUEST"/>
       <value enum="y" description="SECURITYLIST"/>
       <value enum="z" description="DERIVATIVESECURITYLISTREQUEST"/>
+      <!-- IG custom message types -->
+      <!-- see http://fixprotocol.org/specifications/EP117 -->
+      <value enum="UA" description="ACCOUNT_SUMMARY_REPORT_REQUEST" />
+      <value enum="CQ" description="ACCOUNT_SUMMARY_REPORT" />
     </field>
     <field number="37" name="OrderID" type="STRING"/>
     <field number="38" name="OrderQty" type="QTY"/>
@@ -6898,6 +7017,8 @@
     <field number="367" name="QuoteSetValidUntilTime" type="UTCTIMESTAMP"/>
     <field number="368" name="QuoteEntryRejectReason" type="INT"/>
     <field number="369" name="LastMsgSeqNumProcessed" type="SEQNUM"/>
+	<!-- IG fix code generation issue -->
+	<field number="370" name="OnBehalfOfSendingTime" type="UTCTIMESTAMP"/>
     <field number="372" name="RefMsgType" type="STRING"/>
     <field number="374" name="BidRequestTransType" type="CHAR">
       <value enum="C" description="CANCEL"/>
@@ -8014,7 +8135,7 @@
       <value enum="1" description="NEW_USED_TO_INCREMENT_THE_OVERALL_TRANSACTION_QUANTITY"/>
       <value enum="2" description="REPLACE_USED_TO_OVERRIDE_THE_OVERALL_TRANSACTION_QUANTITY_OR_SPECIFI_ADD_MESSAGES_BASED_ON_THE_REFERENCE_ID"/>
       <value enum="3" description="CANCEL_USED_TO_REMOVE_THE_OVERALL_TRANSACTION_OR_SPECIFIC_ADD_MESSAGES_BASED_ON_REFERENCE_ID"/>
-      <value enum="4" description="REVERSE_USED_TO_COMPLETELLY_BACK_OUT_THE_TRANSACTION_SUCH_THAT_THE_TRANSACTION_NEVER_EXISTED"/>
+      <value enum="4" description="REVERSE_USED_TO_COMPLETELY_BACK_OUT_THE_TRANSACTION_SUCH_THAT_THE_TRANSACTION_NEVER_EXISTED"/>
     </field>
     <field number="713" name="OrigPosReqRefID" type="STRING"/>
     <field number="714" name="PosMaintRptRefID" type="STRING"/>
@@ -8460,6 +8581,9 @@
       <value enum="2" description="NATIONAL"/>
       <value enum="3" description="GLOBAL"/>
       <value enum="4" description="NATIONAL_EXCLUDING_LOCAL"/>
+      
+      <!--  IG Custom scope for guaranteed stops -->
+      <value enum="999" description="GUARANTEED"/>
     </field>
     <field number="841" name="DiscretionMoveType" type="INT">
       <value enum="0" description="FLOATING"/>
@@ -8606,6 +8730,13 @@
       <value enum="28" description="INSTRUMENT_STRIKE_PRICE"/>
       <value enum="29" description="TRADEABLE_INDICATOR"/>
       <value enum="99" description="TEXT_SUPPLY_THE_TEXT_OF_THE_ATTRIBUTE_OR_DISCLAIMER_IN_THE_INSTRATTRIBVALUE_FIELD_"/>
+      <!-- IG Customisations -->
+      <value enum="115" description="DEALABLE_CURRENCIES"/>
+      <value enum="116" description="MARKET_ORDER_SUPPORTED"/>
+      <value enum="117" description="MINIMUM_DEAL_SIZE"/>
+      <value enum="118" description="MINIMUM_STOP_DISTANCE"/>
+      <value enum="119" description="PRICE_SCALING_FACTOR"/>
+      <value enum="120" description="MARKET_DATA_SUPPORTED"/>
     </field>
     <field number="872" name="InstrAttribValue" type="STRING"/>
     <field number="873" name="DatedDate" type="LOCALMKTDATE"/>
@@ -9119,6 +9250,10 @@
       <value enum="2" description="MDENTRYID"/>
       <value enum="3" description="QUOTEENTRYID"/>
       <value enum="4" description="ORIGINAL_ORDER_ID"/>
+      
+      <!-- IG Customisations -->
+      <value enum="P" description="POSITIONID"/>
+      <value enum="C" description="CLIENTID"/>            
     </field>
     <field number="1082" name="SecondaryDisplayQty" type="QTY"/>
     <field number="1083" name="DisplayWhen" type="CHAR">
@@ -9938,5 +10073,60 @@
       <value enum="2" description="REJECTED"/>
       <value enum="3" description="TERMINATE_UNASSIGN"/>
     </field>
+    
+    <!-- New Field for Position ID : See http://www.fixprotocol.org/specifications/fields -->
+    <field number="7324" name="PositionId" type="STRING"/>
+    
+    <!-- New Fields for Originating (Client/IG) Order Refs, Closing Order ID and Open Price in Position Report - IG customisation -->
+    <field number="20101" name="OriginatingClientOrderRef" type="STRING"/>
+    <field number="20102" name="OriginatingOrderIDRef" type="STRING"/>
+    <field number="20103" name="ClosingOrderIDRef" type="STRING"/>
+    <field number="20104" name="OpenPrice" type="PRICE"/>
+    
+    <!-- New Field for trailing stop increment : See http://www.fixprotocol.org/specifications/fields -->
+    <field number="5008" name="TrailingStopIncrement" type="FLOAT"/>
+    <field number="5009" name="MinimumTrailingStopDistance" type="FLOAT"/>
+    <field number="8000" name="SimulatedTime" type="UTCTIMESTAMP"/>
+    <field number="9000" name="NoNestedUserData" type="INT"/>
+    <field number="9001" name="NestedUserDataName" type="STRING"/>
+    <field number="9002" name="NestedUserDataValue" type="STRING"/>
+    <field number="9995" name="SpotValueDateForNDF" type="LOCALMKTDATE"/>    
+    
+  <!-- IG custom fields added for Account Summary Report - see http://fixprotocol.org/specifications/EP117 -->
+    <field number="1699" name="AccountSummaryReportID" type="STRING"/>
+    <field number="5011" name="AccountSummaryReportRequestID" type="STRING"/>
+    <field number="5012" name="AccountSummaryReportRequestResult" type="INT">
+      <value enum="0" description="VALID_REQUEST"/>
+      <value enum="1" description="INVALID_OR_UNSUPPORTED_REQUEST"/>
+      <value enum="2" description="UNKNOWN_ACCOUNT"/>
+      <value enum="3" description="UNAUTHORIZED_FOR_ACCOUNT_SUMMARY_REQUEST"/>
+      <value enum="4" description="NOT_SUPPORTED"/>
+      <value enum="99" description="OTHER"/>
+    </field>
+   
+     <!-- MarginAmtData - see http://fixprotocol.org/specifications/EP102 -->
+    <field number="1643" name="NoMarginAmt" type="NUMINGROUP"/>
+    <field number="1644" name="MarginAmtType" type="INT">
+         <value enum="22" description="TOTAL_MARGIN"/>
+         <!-- IG-defined margin amount types -->
+         <value enum="100" description="CONTROLLED_RISK_MARGIN"/>
+         <value enum="101" description="NON_CONTROLLED_RISK_MARGIN"/>
+    </field>
+    <field number="1645" name="MarginAmt" type="AMT"/>
+    <field number="1646" name="MarginAmtCcy" type="CURRENCY"/>
+    
+    <!-- Collateral Amount Data - see http://fixprotocol.org/specifications/EP117 -->
+    <field number="1703" name="NoCollateralAmounts" type="NUMINGROUP"/>
+    <field number="1704" name="CollateralType" type="STRING"/>
+    <field number="1705" name="CurrentCollateralAmount" type="AMT"/>
+    <field number="1706" name="CollateralCurrency" type="CURRENCY"/>
+
+    <!-- IG custom fields added for Account Summary Report -->
+    <field number="5017" name="NoAccountSummaryItems" type="NUMINGROUP"/>
+    <field number="5018" name="AccountSummaryItemType" type="INT">
+        <value enum="100" description="RUNNING_PROFIT_LOSS"/>
+    </field>
+    <field number="5019" name="AccountSummaryItemAmount" type="AMT"/>
+    <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>    
   </fields>
 </fix>
