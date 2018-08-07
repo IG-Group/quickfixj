@@ -5613,10 +5613,29 @@
       <value enum="2" description="AUTOMATED_EXECUTION_ORDER_PUBLIC_BROKER_INTERVENTION_OK"/>
       <value enum="3" description="MANUAL_ORDER_BEST_EXECUTION"/>
     </field>
-    <field number="22" name="SecurityIDSource" type="STRING"> 
-      <!--  IG Customisation -->        
-      <value enum="101" description="IG_ID"/>
-      <value enum="102" description="IG_CHART_ID"/>
+    <field number="22" name="SecurityIDSource" type="STRING">
+      <value enum="1" description="CUSIP"/>
+      <value enum="2" description="SEDOL"/>
+      <value enum="3" description="QUIK"/>
+      <value enum="4" description="ISIN_NUMBER"/>
+      <value enum="5" description="RIC_CODE"/>
+      <value enum="6" description="ISO_CURRENCY_CODE"/>
+      <value enum="7" description="ISO_COUNTRY_CODE"/>
+      <value enum="8" description="EXCHANGE_SYMBOL"/>
+      <value enum="9" description="CONSOLIDATED_TAPE_ASSOCIATION"/>
+      <value enum="A" description="BLOOMBERG_SYMBOL"/>
+      <value enum="B" description="WERTPAPIER"/>
+      <value enum="C" description="DUTCH"/>
+      <value enum="D" description="VALOREN"/>
+      <value enum="E" description="SICOVAM"/>
+      <value enum="F" description="BELGIAN"/>
+      <value enum="G" description="COMMON"/>
+      <value enum="H" description="CLEARING_HOUSE_CLEARING_ORGANIZATION"/>
+      <value enum="I" description="ISDA_FPML_PRODUCT_SPECIFICATION"/>
+      <value enum="J" description="OPTION_PRICE_REPORTING_AUTHORITY"/>
+      <value enum="K" description="ISDA_FPML_PRODUCT_URL"/>
+      <value enum="L" description="LETTER_OF_CREDIT"/>
+      <value enum="M" description="MARKETPLACE_ASSIGNED_IDENTIFIER"/>
     </field>
     <field number="23" name="IOIID" type="STRING"/>
     <field number="25" name="IOIQltyInd" type="CHAR">
