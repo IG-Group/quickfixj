@@ -5636,6 +5636,9 @@
       <value enum="K" description="ISDA_FPML_PRODUCT_URL"/>
       <value enum="L" description="LETTER_OF_CREDIT"/>
       <value enum="M" description="MARKETPLACE_ASSIGNED_IDENTIFIER"/>
+      <!--  IG Customisation -->
+      <value enum="101" description="IG_ID"/>
+      <value enum="102" description="IG_CHART_ID"/>
     </field>
     <field number="23" name="IOIID" type="STRING"/>
     <field number="25" name="IOIQltyInd" type="CHAR">
