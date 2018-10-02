@@ -58,7 +58,6 @@ public class IoSessionResponder implements Responder {
             }
             return false;
         }
-
         // The data is written asynchronously in a MINA thread
         WriteFuture future = ioSession.write(data);
         if (synchronousWrites) {
@@ -95,7 +94,7 @@ public class IoSessionResponder implements Responder {
         return null;
     }
 
-    IoSession getIoSession() {
+    public IoSession getIoSession() {
         return ioSession;
     }
 }
