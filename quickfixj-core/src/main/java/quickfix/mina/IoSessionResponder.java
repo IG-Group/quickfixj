@@ -94,7 +94,11 @@ public class IoSessionResponder implements Responder {
         return null;
     }
 
-    public IoSession getIoSession() {
+    IoSession getIoSession() {
         return ioSession;
+    }
+    
+    public int getScheduledWriteMessages(){
+    	return ioSession.getScheduledWriteMessages();
     }
 }
