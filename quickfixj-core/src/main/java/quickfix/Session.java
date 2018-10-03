@@ -19,6 +19,7 @@
 
 package quickfix;
 
+import org.apache.mina.core.session.IoSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import quickfix.Message.Header;
@@ -55,6 +56,7 @@ import quickfix.field.TargetSubID;
 import quickfix.field.TestReqID;
 import quickfix.field.Text;
 import quickfix.mina.EventHandlingStrategy;
+import quickfix.mina.IoSessionResponder;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -2970,6 +2972,12 @@ public class Session implements Closeable {
 
     private String getMessageToLog(final Message message) {
         return (message.toRawString() != null ? message.toRawString() : message.toString());
+    }
+    
+    public int getScheduledWriteMessages(){
+    	synchronized (responderLock) {
+    		return (responder != null) ? ((IoSessionResponder) this.responder).getScheduledWriteMessages() : 0;
+		}
     }
 
 }
