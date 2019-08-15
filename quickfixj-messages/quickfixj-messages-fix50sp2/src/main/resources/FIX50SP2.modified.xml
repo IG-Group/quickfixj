@@ -261,6 +261,8 @@
       <field name="RefOrderID" required="N"/>
       <field name="RefOrderIDSource" required="N"/>
       <field name="ContingencyType" required="N"/>
+      
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="OrderCancelReject" msgtype="9" msgcat="app">
       <field name="OrderID" required="Y"/>
@@ -387,6 +389,7 @@
       <field name="RegistID" required="N"/>
       <field name="Designation" required="N"/>
       <field name="MultiLegRptTypeReq" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="MultilegOrderCancelReplace" msgtype="AC" msgcat="app">
       <field name="OrderID" required="N"/>
@@ -475,6 +478,7 @@
       <field name="RegistID" required="N"/>
       <field name="Designation" required="N"/>
       <field name="MultiLegRptTypeReq" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="TradeCaptureReportRequest" msgtype="AD" msgcat="app">
       <field name="TradeRequestID" required="Y"/>
@@ -2114,6 +2118,7 @@
       <component name="TrdRegTimestamps" required="N"/>
       <field name="RefOrderID" required="N"/>
       <field name="RefOrderIDSource" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="NewOrderList" msgtype="E" msgcat="app">
       <field name="ListID" required="Y"/>
@@ -2267,6 +2272,7 @@
       <field name="CustOrderHandlingInst" required="N"/>
       <field name="OrderHandlingInstSource" required="N"/>
       <component name="TrdRegTimestamps" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="OrderStatusRequest" msgtype="H" msgcat="app">
       <field name="OrderID" required="N"/>
@@ -5516,6 +5522,12 @@
          <field name="AccountSummaryItemCurrency" required="N"/>
       </group>
     </component>
+    <component name="OrderAttributeGrp">
+	    <group name="NoOrderAttributes" required="N">
+	        <field name="OrderAttributeType" required="N"/>
+	        <field name="OrderAttributeValue" required="N"/>
+	    </group>
+	</component>
   </components>
   <fields>
     <field number="1" name="Account" type="STRING"/>
@@ -10149,6 +10161,15 @@
         <value enum="100" description="RUNNING_PROFIT_LOSS"/>
     </field>
     <field number="5019" name="AccountSummaryItemAmount" type="AMT"/>
-    <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>    
+    <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>   
+    
+    <!-- Guaranted Stop -->
+    <field number="5021" name="	OrderAttributeType" type="INT">
+      <value enum="1000" description="GUARANTEED_STOP"/> 
+    </field>
+    <field number="5022" name="OrderAttributeValue" type="BOOLEAN">
+      <value enum="N" description="PRICE_NOT_GUARANTEED"/>
+      <value enum="Y" description="PRICE_GUARANTEED"/>
+    </field>
   </fields>
 </fix>
