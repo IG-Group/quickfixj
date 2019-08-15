@@ -5523,10 +5523,10 @@
       </group>
     </component>
     <component name="OrderAttributeGrp">
-	    <group name="NoOrderAttributes" required="Y">
-	        <field name="OrderAttributeType" required="Y"/>
-	        <field name="OrderAttributeValue" required="Y"/>
-	    </group>
+	  <group name="NoOrderAttributes" required="Y">
+	     <field name="OrderAttributeType" required="Y"/>
+	     <field name="OrderAttributeValue" required="Y"/>
+	  </group>
 	</component>
   </components>
   <fields>
@@ -10157,22 +10157,22 @@
     
     <!-- Guaranted Stop -->
     <field number="2593" name="NoOrderAttributes" type="NUMINGROUP"/>
-    <field number="2594" name="	OrderAttributeType" type="INT">
-      <value enum="0" description="AGGREGATED_ORDER"/>
-      <value enum="1" description="PENDING_ALLOCATION"/>
-      <value enum="2" description="LIQUIDITY_PROVISION_ACTIVITY_ORDER"/>
-      <value enum="3" description="RISK_REDUCTION_ORDER"/>
-      <value enum="4" description="ALGORITHMIC_ORDER"/>
-      <value enum="5" description="SYSTEMIC_INTERNALISER_ORDER"/>
-      <value enum="6" description="ALL_EXECUTIONS_FOR_THE_ORDER_ARE_TO_BE_SUBMITTED_TO_AN_APA"/>
-      <value enum="7" description="ORDER_EXECUTION_INSTRUCTED_BY_CLIENT"/>
-      <value enum="8" description="LARGE_IN_SCALE"/>
-      <value enum="9" description="HIDDEN"/>
-      <value enum="1000" description="GUARANTEE_INSTRUCTION"/> 
+    <field number="2594" name="OrderAttributeType" type="INT">
+         <value enum="0" description="AGGREGATED_ORDER"/>
+         <value enum="1" description="PENDING_ALLOCATION"/>
+         <value enum="2" description="LIQUIDITY_PROVISION_ACTIVITY_ORDER"/>
+         <value enum="3" description="RISK_REDUCTION_ORDER"/>
+         <value enum="4" description="ALGORITHMIC_ORDER"/>
+         <value enum="5" description="SYSTEMIC_INTERNALISER_ORDER"/>
+         <value enum="6" description="ALL_EXECUTIONS_FOR_THE_ORDER_ARE_TO_BE_SUBMITTED_TO_AN_APA"/>
+         <value enum="7" description="ORDER_EXECUTION_INSTRUCTED_BY_CLIENT"/>
+         <value enum="8" description="LARGE_IN_SCALE"/>
+         <value enum="9" description="HIDDEN"/>
+         <value enum="1000" description="GUARANTEE_INSTRUCTION"/> 
     </field>
     <field number="2595" name="OrderAttributeValue" type="BOOLEAN">
-      <value enum="N" description="PRICE_NOT_GUARANTEED"/>
-      <value enum="Y" description="PRICE_GUARANTEED"/>
+         <value enum="N" description="PRICE_NOT_GUARANTEED"/>
+         <value enum="Y" description="PRICE_GUARANTEED"/>
     </field>
 
     <!-- IG custom fields added for Account Summary Report -->
