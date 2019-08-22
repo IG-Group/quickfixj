@@ -4832,6 +4832,7 @@
         <field name="OrderRestrictions" required="N"/>
         <field name="PreTradeAnonymity" required="N"/>
         <field name="CustOrderCapacity" required="N"/>
+        <component name="OrderAttributeGrp" required="N"/>
         <field name="ForexReq" required="N"/>
         <field name="SettlCurrency" required="N"/>
         <field name="BookingType" required="N"/>
