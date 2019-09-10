@@ -261,6 +261,8 @@
       <field name="RefOrderID" required="N"/>
       <field name="RefOrderIDSource" required="N"/>
       <field name="ContingencyType" required="N"/>
+      
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="OrderCancelReject" msgtype="9" msgcat="app">
       <field name="OrderID" required="Y"/>
@@ -387,6 +389,7 @@
       <field name="RegistID" required="N"/>
       <field name="Designation" required="N"/>
       <field name="MultiLegRptTypeReq" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="MultilegOrderCancelReplace" msgtype="AC" msgcat="app">
       <field name="OrderID" required="N"/>
@@ -475,6 +478,7 @@
       <field name="RegistID" required="N"/>
       <field name="Designation" required="N"/>
       <field name="MultiLegRptTypeReq" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="TradeCaptureReportRequest" msgtype="AD" msgcat="app">
       <field name="TradeRequestID" required="Y"/>
@@ -2114,6 +2118,7 @@
       <component name="TrdRegTimestamps" required="N"/>
       <field name="RefOrderID" required="N"/>
       <field name="RefOrderIDSource" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="NewOrderList" msgtype="E" msgcat="app">
       <field name="ListID" required="Y"/>
@@ -2267,6 +2272,7 @@
       <field name="CustOrderHandlingInst" required="N"/>
       <field name="OrderHandlingInstSource" required="N"/>
       <component name="TrdRegTimestamps" required="N"/>
+      <component name="OrderAttributeGrp" required="N"/>
     </message>
     <message name="OrderStatusRequest" msgtype="H" msgcat="app">
       <field name="OrderID" required="N"/>
@@ -4826,6 +4832,7 @@
         <field name="OrderRestrictions" required="N"/>
         <field name="PreTradeAnonymity" required="N"/>
         <field name="CustOrderCapacity" required="N"/>
+        <component name="OrderAttributeGrp" required="N"/>
         <field name="ForexReq" required="N"/>
         <field name="SettlCurrency" required="N"/>
         <field name="BookingType" required="N"/>
@@ -5516,6 +5523,12 @@
          <field name="AccountSummaryItemCurrency" required="N"/>
       </group>
     </component>
+    <component name="OrderAttributeGrp">
+	  <group name="NoOrderAttributes" required="Y">
+	     <field name="OrderAttributeType" required="Y"/>
+	     <field name="OrderAttributeValue" required="Y"/>
+	  </group>
+	</component>
   </components>
   <fields>
     <field number="1" name="Account" type="STRING"/>
@@ -10142,6 +10155,26 @@
     <field number="1704" name="CollateralType" type="STRING"/>
     <field number="1705" name="CurrentCollateralAmount" type="AMT"/>
     <field number="1706" name="CollateralCurrency" type="CURRENCY"/>
+    
+    <!-- Guaranted Stop -->
+    <field number="2593" name="NoOrderAttributes" type="NUMINGROUP"/>
+    <field number="2594" name="OrderAttributeType" type="INT">
+         <value enum="0" description="AGGREGATED_ORDER"/>
+         <value enum="1" description="PENDING_ALLOCATION"/>
+         <value enum="2" description="LIQUIDITY_PROVISION_ACTIVITY_ORDER"/>
+         <value enum="3" description="RISK_REDUCTION_ORDER"/>
+         <value enum="4" description="ALGORITHMIC_ORDER"/>
+         <value enum="5" description="SYSTEMIC_INTERNALISER_ORDER"/>
+         <value enum="6" description="ALL_EXECUTIONS_FOR_THE_ORDER_ARE_TO_BE_SUBMITTED_TO_AN_APA"/>
+         <value enum="7" description="ORDER_EXECUTION_INSTRUCTED_BY_CLIENT"/>
+         <value enum="8" description="LARGE_IN_SCALE"/>
+         <value enum="9" description="HIDDEN"/>
+         <value enum="1000" description="GUARANTEE_INSTRUCTION"/> 
+    </field>
+    <field number="2595" name="OrderAttributeValue" type="BOOLEAN">
+         <value enum="N" description="PRICE_NOT_GUARANTEED"/>
+         <value enum="Y" description="PRICE_GUARANTEED"/>
+    </field>
 
     <!-- IG custom fields added for Account Summary Report -->
     <field number="5017" name="NoAccountSummaryItems" type="NUMINGROUP"/>
@@ -10149,6 +10182,6 @@
         <value enum="100" description="RUNNING_PROFIT_LOSS"/>
     </field>
     <field number="5019" name="AccountSummaryItemAmount" type="AMT"/>
-    <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>    
+    <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>  
   </fields>
 </fix>
