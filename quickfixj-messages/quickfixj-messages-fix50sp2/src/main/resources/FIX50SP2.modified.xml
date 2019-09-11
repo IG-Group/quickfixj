@@ -10169,7 +10169,7 @@
          <value enum="7" description="ORDER_EXECUTION_INSTRUCTED_BY_CLIENT"/>
          <value enum="8" description="LARGE_IN_SCALE"/>
          <value enum="9" description="HIDDEN"/>
-         <value enum="1000" description="GUARANTEE_INSTRUCTION"/> 
+         <value enum="1000" description="PRICE_GUARANTEE_INSTRUCTION"/> 
     </field>
     <field number="2595" name="OrderAttributeValue" type="BOOLEAN">
          <value enum="N" description="PRICE_NOT_GUARANTEED"/>
