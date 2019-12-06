@@ -2467,6 +2467,9 @@
       <!-- IG - made required -->
       <field name="QuoteReqID" required="Y"/>
       <field name="QuoteID" required="Y"/>
+      <!-- IG - added Bid and Offer ID -->
+      <field name="BidID" required="N"/>
+      <field name="OfferID" required="N"/>
       <field name="QuoteMsgID" required="N"/>
       <field name="QuoteRespID" required="N"/>
       <field name="QuoteType" required="N"/>
@@ -10155,7 +10158,10 @@
     <field number="1704" name="CollateralType" type="STRING"/>
     <field number="1705" name="CurrentCollateralAmount" type="AMT"/>
     <field number="1706" name="CollateralCurrency" type="CURRENCY"/>
-    
+
+    <!-- IG - added Offer ID -->
+    <field number="1867" name="OfferID" type="STRING"/>
+
     <!-- Guaranted Stop -->
     <field number="2593" name="NoOrderAttributes" type="NUMINGROUP"/>
     <field number="2594" name="OrderAttributeType" type="INT">
