@@ -6857,5 +6857,6 @@
       <value enum="28" description="TZTIMESTAMP"/>
       <value enum="29" description="TENOR"/>
     </field>
+    <field number="960" name="StrategyParameterValue" type="STRING"/>
   </fields>
 </fix>
