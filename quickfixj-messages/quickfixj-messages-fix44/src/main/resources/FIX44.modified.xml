@@ -1194,6 +1194,7 @@
     <component name="PegInstructions" required="N"/>
     <component name="DiscretionInstructions" required="N"/>
     <field name="TargetStrategy" required="N"/>
+    <component name="StrategyParametersGrp" required="N"/>
     <field name="TargetStrategyParameters" required="N"/>
     <field name="ParticipationRate" required="N"/>
     <field name="CancellationRights" required="N"/>
@@ -1262,6 +1263,7 @@
     <field name="PeggedPrice" required="N"/>
     <field name="DiscretionPrice" required="N"/>
     <field name="TargetStrategy" required="N"/>
+    <component name="StrategyParametersGrp" required="N"/>
     <field name="TargetStrategyParameters" required="N"/>
     <field name="ParticipationRate" required="N"/>
     <field name="TargetStrategyPerformance" required="N"/>
@@ -1448,6 +1450,7 @@
     <component name="PegInstructions" required="N"/>
     <component name="DiscretionInstructions" required="N"/>
     <field name="TargetStrategy" required="N"/>
+    <component name="StrategyParametersGrp" required="N"/>
     <field name="TargetStrategyParameters" required="N"/>
     <field name="ParticipationRate" required="N"/>
     <field name="ComplianceID" required="N"/>
@@ -3839,6 +3842,13 @@
           <field name="PartySubID" required="N"/>
           <field name="PartySubIDType" required="N"/>
         </group>
+      </group>
+    </component>
+    <component name="StrategyParametersGrp">
+      <group name="NoStrategyParameters" required="N">
+        <field name="StrategyParameterName" required="N"/>
+        <field name="StrategyParameterType" required="N"/>
+        <field name="StrategyParameterValue" required="N"/>
       </group>
     </component>
     <component name="NestedParties">
@@ -6814,5 +6824,38 @@
     <field number="954" name="Nested3PartySubIDType" type="INT"/>
     <field number="955" name="LegContractSettlMonth" type="MONTHYEAR"/>
     <field number="956" name="LegInterestAccrualDate" type="LOCALMKTDATE"/>
+    <field number="957" name="NoStrategyParameters" type="NUMINGROUP"/>
+    <field number="958" name="StrategyParameterName" type="STRING"/>
+    <field number="959" name="StrategyParameterType" type="INT">
+      <value enum="1" description="INT"/>
+      <value enum="2" description="LENGTH"/>
+      <value enum="3" description="NUMINGROUP"/>
+      <value enum="4" description="SEQNUM"/>
+      <value enum="5" description="TAGNUM"/>
+      <value enum="6" description="FLOAT"/>
+      <value enum="7" description="QTY"/>
+      <value enum="8" description="PRICE"/>
+      <value enum="9" description="PRICEOFFSET"/>
+      <value enum="10" description="AMT"/>
+      <value enum="11" description="PERCENTAGE"/>
+      <value enum="12" description="CHAR"/>
+      <value enum="13" description="BOOLEAN"/>
+      <value enum="14" description="STRING"/>
+      <value enum="15" description="MULTIPLECHARVALUE"/>
+      <value enum="16" description="CURRENCY"/>
+      <value enum="17" description="EXCHANGE"/>
+      <value enum="18" description="MONTHYEAR"/>
+      <value enum="19" description="UTCTIMESTAMP"/>
+      <value enum="20" description="UTCTIMEONLY"/>
+      <value enum="21" description="LOCALMKTDATE"/>
+      <value enum="22" description="UTCDATEONLY"/>
+      <value enum="23" description="DATA"/>
+      <value enum="24" description="MULTIPLESTRINGVALUE"/>
+      <value enum="25" description="COUNTRY"/>
+      <value enum="26" description="LANGUAGE"/>
+      <value enum="27" description="TZTIMEONLY"/>
+      <value enum="28" description="TZTIMESTAMP"/>
+      <value enum="29" description="TENOR"/>
+    </field>
   </fields>
 </fix>
