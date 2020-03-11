@@ -10111,6 +10111,7 @@
       <value enum="2" description="REJECTED"/>
       <value enum="3" description="TERMINATE_UNASSIGN"/>
     </field>
+<<<<<<< HEAD
     
     <!-- New Field for Position ID : See http://www.fixprotocol.org/specifications/fields -->
     <field number="7324" name="PositionId" type="STRING"/>
@@ -10189,5 +10190,11 @@
     </field>
     <field number="5019" name="AccountSummaryItemAmount" type="AMT"/>
     <field number="5020" name="AccountSummaryItemCurrency" type="CURRENCY"/>  
+    <field number="1687" name="ShortSaleRestriction" type="INT">
+	  <value enum="0" description="NO_RESTRICTIONS"/>
+      <value enum="1" description="SECURITY_NOT_SHORTABLE"/>
+      <value enum="2" description="SECURITY_NOT_SHORTABLE_AT_OR_BELOW_BEST_BID"/>
+      <value enum="3" description="SECURITY_NOT_SHORTABLE_WITHOUT_PREBORROW"/>
+    </field>	
   </fields>
 </fix>
