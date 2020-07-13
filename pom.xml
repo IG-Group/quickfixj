@@ -27,9 +27,8 @@
 
 	<scm>
 		<connection>scm:git:ssh://git.iggroup.local:7999/fo/quickfixj.git</connection>
-		<url>https://git.iggroup.local/scm/fo/fixotc-common.git</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<url>https://git.iggroup.local/scm/fo/quickfixj.git</url>
+    </scm>
 
 	<developers>
 		<developer>
