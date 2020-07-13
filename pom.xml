@@ -3,7 +3,7 @@
 
 	<groupId>com.ig</groupId>
 	<artifactId>quickfixj-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<name>QuickFIX/J Parent</name>
@@ -28,7 +28,8 @@
 	<scm>
 		<connection>scm:git:ssh://git.iggroup.local:7999/fo/quickfixj.git</connection>
 		<url>https://git.iggroup.local/scm/fo/fixotc-common.git</url>
-	</scm>
+	  <tag>quickfixj-parent-1.0.0</tag>
+  </scm>
 
 	<developers>
 		<developer>
